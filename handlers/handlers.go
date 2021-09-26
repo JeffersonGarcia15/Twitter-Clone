@@ -4,12 +4,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"github.com/gorilla/mux"
-	"github.com/rs/cors"
+
 	"github.com/JeffersonGarcia15/Twitter-Clone/middlew"
 	"github.com/JeffersonGarcia15/Twitter-Clone/routers"
-
-
+	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 /*
@@ -20,6 +19,7 @@ func Urls() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/signup", middlew.CheckDB(routers.SignUp)).Methods("POST")
+	
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {

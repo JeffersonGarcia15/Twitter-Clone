@@ -11,7 +11,7 @@ import (
 /*
 InsertUser is the final stop with the db to insert user data
 */
-func InsertUser(u *models.User) (string, bool, error) {
+func InsertUser(u models.User) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	
