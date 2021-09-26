@@ -6,6 +6,10 @@ import (
 	"os"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/JeffersonGarcia15/Twitter-Clone/middlew"
+	"github.com/JeffersonGarcia15/Twitter-Clone/routers"
+
+
 )
 
 /*
@@ -14,6 +18,8 @@ Urls is in charge of setting the PORT, and the handler plus making the server li
 
 func Urls() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/signup", middlew.CheckDB(routers.SignUp)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
