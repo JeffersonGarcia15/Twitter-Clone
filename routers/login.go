@@ -35,6 +35,27 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "User or password incorrect " , 400)
 		return
 	}
-	
+
+	jwtKey, err := jwt.GenerateJWT(document)
+
+	if err != nil {
+		http.Error(w, "An error was encountered while generating the JWT "+err.Error(), 400)
+		return
+	}
+
+	response := models.LoginResponse {
+		Token: jwtKey,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(response)
+
+	expirationTime := time.Now().Add(24 * time.Hour)
+	http.SetCookie(w, &http.Cookie{
+		Name: "token",
+		Value: jwtKey,
+		Expires: expirationTime,
+	})
 }
 
