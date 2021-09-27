@@ -1,0 +1,9 @@
+Signup (
+    {
+    "email": "demo@aa.io",
+    "password": "123456",
+    "name": "Demo",
+    "last": "User",
+    "bod": "1970-06-30T00:00:00Z"
+}
+)
