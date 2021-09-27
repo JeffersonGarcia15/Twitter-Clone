@@ -15,7 +15,7 @@ import (
 MongCN is the object of connection to the mongodb server
 */
 
-func goDotEnvVariable(key string) string {
+func GoDotEnvVariable(key string) string {
 	err := godotenv.Load(".env")
 
 	if err != nil {
@@ -24,7 +24,7 @@ func goDotEnvVariable(key string) string {
 	return os.Getenv(key)
 }
 
-var dotenv = goDotEnvVariable("MONGO_PASSWORD")
+var dotenv = GoDotEnvVariable("MONGO_PASSWORD")
 var MongoCN = ConnectDB()
 var clientOptions = options.Client().ApplyURI("mongodb+srv://Jefferson:" + dotenv + "@jefferson.x0uqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 

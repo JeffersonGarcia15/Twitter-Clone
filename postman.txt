@@ -7,3 +7,16 @@ Signup (
     "bod": "1970-06-30T00:00:00Z"
 }
 )
+
+Login (
+    {
+    "email": "demo@aa.io",
+    "password": "123456"
+}
+)
+
+Token (
+    {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMYXN0IjoiVXNlciIsIl9pZCI6IjYxNTE5YzdhNDZkMmVlOGViODE0MDZiYiIsImJpb2dyYXBoeSI6IiIsImJvZCI6IjE5NzAtMDYtMzBUMDA6MDA6MDBaIiwiZW1haWwiOiJkZW1vQGFhLmlvIiwiZXhwIjoxNjMyODI0ODgxLCJsb2NhdGlvbiI6IiIsIm5hbWUiOiJEZW1vIiwid2Vic2l0ZSI6IiJ9.yKiaMJ8mP3iLtRNV8HxoKEiBWthrMnNUUoZop_8dSlA"
+}
+)
