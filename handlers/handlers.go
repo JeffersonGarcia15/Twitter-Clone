@@ -20,6 +20,8 @@ func Urls() {
 
 	router.HandleFunc("/signup", middlew.CheckDB(routers.SignUp)).Methods("POST")
 	router.HandleFunc("/login", middlew.CheckDB(routers.Login)).Methods("POST")
+	router.HandleFunc("/profile", middlew.CheckDB(middlew.ValidJWT(routers.Profile))).Methods("GET")
+
 
 	
 
