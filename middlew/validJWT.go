@@ -10,7 +10,7 @@ import (
 ValidJWT allows us to validate the JWT that we get from the request
 */
 
-func ValidJWT(next http.Handler) http.HandlerFunc {
+func ValidJWT(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, _, _, err := routers.ProcessToken(r.Header.Get("Authorization"))
 		if err != nil {
