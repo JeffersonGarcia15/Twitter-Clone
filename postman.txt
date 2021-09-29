@@ -45,3 +45,9 @@ EditProfile (
     "website": "https://www.appacademy.io/"
 }
 )
+
+Tweet (
+    {
+    "body": "This is my first tweet"
+}
+)

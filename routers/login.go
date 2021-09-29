@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	document, exists := db.LoginAttempt(t.Email, t.Password) 
-	if exists == false {
+	if !exists {
 		http.Error(w, "User or password incorrect " , 400)
 		return
 	}
