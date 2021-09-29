@@ -29,7 +29,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	_, found, _ := db.CheckIfUserExists(t.Email)
-	if found == true {
+	if found {
 		http.Error(w, "Email already exists", 400)
 		return
 	}
@@ -39,7 +39,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "There was an error when creating the user"+err.Error(), 400)
 		return
 	}
-	if status == false {
+	if !status {
 		http.Error(w, "It was not possible to create the user", 400)
 		return
 	}
