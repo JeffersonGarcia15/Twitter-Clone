@@ -14,7 +14,7 @@ import (
 InsertTweet saves a record of a tweet in the database.
 */
 
-func InsertTweet(t models.Tweet) (string, bool, error) {
+func InsertTweet(t models.RecordTweet) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 

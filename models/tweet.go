@@ -1,10 +1,9 @@
 package models
 
-import "time"
+/*
+Tweet captures the body of the message that we get
+*/
 
 type Tweet struct {
-	UserID string `bson:"userid" json:"userid,omitempty"`
-	Body string `bson:"body" json:"body,omitempty"`
-	Date time.Time `bson:"date" json:"date,omitempty"`
-
+	Body string `bson:"body" json:"body"`
 }
