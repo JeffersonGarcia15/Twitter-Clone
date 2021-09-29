@@ -11,10 +11,10 @@ import (
 )
 
 /*
-EditUser allows us to edit a user's profile
+EditUser allows us to edit the information of a user on the db
 */
 
-func EditUser(u models.User, ID string) (bool, error) {
+func EditRegister(u models.User, ID string) (bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
