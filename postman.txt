@@ -22,7 +22,7 @@ Token (
 )
 
 Profile (
-    id = "objID" in mongo
+    id = "objID" in mongo goes in Params
     we get:
     {
     "id": "61519c7a46d2ee8eb81406bb",
@@ -32,4 +32,16 @@ Profile (
     "email": "demo@aa.io"
 }
 which will also be in the url..sort of
+)
+
+EditProfile (
+    {
+    "name": "Demo",
+    "Last": "User",
+    "Bod": "1970-06-30T00:00:00Z",
+    "banner": "",
+    "location": "San Francisco, California",
+    "biography": "A top student at a top coding bootcamp",
+    "website": "https://www.appacademy.io/"
+}
 )
