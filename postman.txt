@@ -51,3 +51,9 @@ Tweet (
     "body": "This is my first tweet"
 }
 )
+
+GetTweets (
+    pagination 1
+    id 61519c7a46d2ee8eb81406bb(userid)
+    
+)
