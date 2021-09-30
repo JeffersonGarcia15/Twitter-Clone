@@ -23,6 +23,8 @@ func Urls() {
 	router.HandleFunc("/profile", middlew.CheckDB(middlew.ValidJWT(routers.Profile))).Methods("GET")
 	router.HandleFunc("/editprofile", middlew.CheckDB(middlew.ValidJWT(routers.EditProfile))).Methods("PUT")
 	router.HandleFunc("/tweet", middlew.CheckDB(middlew.ValidJWT(routers.StoreTweet))).Methods("POST")
+	router.HandleFunc("/gettweet", middlew.CheckDB(middlew.ValidJWT(routers.GetTweets))).Methods("GET")
+
 
 
 

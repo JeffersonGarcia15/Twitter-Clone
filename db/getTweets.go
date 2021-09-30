@@ -24,12 +24,12 @@ func GetTweets(ID string, pagination int64) ([]*models.ReturnTweets, bool) {
 		"userid": ID,
 	}
 
-	options := options.Find()
-	options.SetLimit(20)
-	options.SetSort(bson.D{{Key: "date", Value: -1}})//-1 for Descending
+	optionsVar := options.Find()
+	optionsVar.SetLimit(20)
+	optionsVar.SetSort(bson.D{{Key: "date", Value: -1}})//-1 for Descending
 	// (1-1)*20=0 so no skips on tweets on the first page, (2-1) * 20 = 20 so skips first 20
-	options.SetSkip((pagination - 1) * 20)//first page is 20 Tweets, the next one will skips the first 20, the next one will skip the first 40...
-	cursor, err := col.Find(ctx, condition, options)
+	optionsVar.SetSkip((pagination - 1) * 20)//first page is 20 Tweets, the next one will skips the first 20, the next one will skip the first 40...
+	cursor, err := col.Find(ctx, condition, optionsVar)
 	if err != nil {
 		log.Fatal(err.Error())
 		return results, false
