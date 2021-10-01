@@ -55,5 +55,9 @@ Tweet (
 GetTweets (
     pagination 1
     id 61519c7a46d2ee8eb81406bb(userid)
-    
+
+)
+
+DeleteTweet (
+    id id from tweet with the same user
 )
