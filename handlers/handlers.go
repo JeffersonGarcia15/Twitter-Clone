@@ -26,6 +26,13 @@ func Urls() {
 	router.HandleFunc("/gettweet", middlew.CheckDB(middlew.ValidJWT(routers.GetTweets))).Methods("GET")
 	router.HandleFunc("/deletetweet", middlew.CheckDB(middlew.ValidJWT(routers.DeleteTweet))).Methods("DELETE")
 
+	router.HandleFunc("/uploadAvatar", middlew.CheckDB(middlew.ValidJWT(routers.AvatarUpload))).Methods("POST")
+	router.HandleFunc("/getAvatar", middlew.CheckDB(routers.GetAvatar)).Methods("GET")
+	router.HandleFunc("/uploadBanner", middlew.CheckDB(middlew.ValidJWT(routers.BannerUpload))).Methods("POST")
+	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET")
+
+
+
 
 
 
