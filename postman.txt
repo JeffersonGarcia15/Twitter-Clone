@@ -61,3 +61,7 @@ GetTweets (
 DeleteTweet (
     id id from tweet with the same user
 )
+
+Avatar & Banner (
+    use formData
+)
