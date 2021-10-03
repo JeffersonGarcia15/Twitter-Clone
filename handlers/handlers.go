@@ -31,6 +31,9 @@ func Urls() {
 	router.HandleFunc("/uploadBanner", middlew.CheckDB(middlew.ValidJWT(routers.BannerUpload))).Methods("POST")
 	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET")
 
+	router.HandleFunc("/follow", middlew.CheckDB(middlew.ValidJWT(routers.JoinRelation))).Methods("POST")
+	
+
 
 
 
