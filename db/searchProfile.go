@@ -3,12 +3,10 @@ package db
 import (
 	"context"
 	"time"
-	"fmt"
 
 	"github.com/JeffersonGarcia15/Twitter-Clone/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-
 )
 
 /*
@@ -33,7 +31,7 @@ func SearchProfile(ID string) (models.User, error) {
 
 	profile.Password = ""
 	if err != nil {
-		fmt.Println("User not found"+err.Error())
+		// fmt.Println("User not found"+err.Error())
 		return profile, err
 	}
 	return profile, nil

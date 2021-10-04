@@ -65,3 +65,32 @@ DeleteTweet (
 Avatar & Banner (
     use formData
 )
+
+Unfollow (
+    id of the other user
+    add the id on the params because it needs to go on the URL
+)
+
+UserList (
+    page 1 to ask for first 20 users
+    searchType new 
+    search ""
+    This will return the users that i am NOT following
+)
+UserList (
+    page 1 to ask for first 20 users
+    searchType follow
+    search ""
+    This will return the users that i DO follow
+)
+
+UserList (
+    page 1 to ask for first 20 users
+    searchType follow
+    search "j"
+    This will return the users that i DO follow whose names start with a "j"
+)
+
+ReadFollowersTweets (
+    page int
+)

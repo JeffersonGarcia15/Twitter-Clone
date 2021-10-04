@@ -32,12 +32,11 @@ func Urls() {
 	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET")
 
 	router.HandleFunc("/follow", middlew.CheckDB(middlew.ValidJWT(routers.JoinRelation))).Methods("POST")
-	
+	router.HandleFunc("/unfollow", middlew.CheckDB(middlew.ValidJWT(routers.DeleteFollow))).Methods("DELETE")
+	router.HandleFunc("/checkrelation", middlew.CheckDB(middlew.ValidJWT(routers.CheckIfRelationExists))).Methods("GET")
 
-
-
-
-
+	router.HandleFunc("/userList", middlew.CheckDB(middlew.ValidJWT(routers.UserList))).Methods("GET")
+	router.HandleFunc("/readFollowersTweets", middlew.CheckDB(middlew.ValidJWT(routers.ReadFollowersTweets))).Methods("GET")
 
 
 	PORT := os.Getenv("PORT")
