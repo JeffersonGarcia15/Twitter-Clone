@@ -12,7 +12,7 @@ LoginAttempt checks if the info in the db is correct in order to attempt to logi
 func LoginAttempt(email string, password string) (models.User, bool) {
 	user, found, _ := CheckIfUserExists(email)
 
-	if found == false {
+	if !found{
 		return user, false
 	}
 

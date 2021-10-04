@@ -3,7 +3,7 @@ package db
 import (
 	"context"
 	"time"
-	"fmt"
+
 	"github.com/JeffersonGarcia15/Twitter-Clone/models"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -21,7 +21,7 @@ func CheckIfRelationExists(t models.Relation) (bool, error) {
 	col := db.Collection("joins")
 
 	condition := bson.M{
-		"userid": t.UserID,
+		"userid":         t.UserID,
 		"userrelationid": t.UserRelationID,
 	}
 
@@ -29,7 +29,7 @@ func CheckIfRelationExists(t models.Relation) (bool, error) {
 	// fmt.Println(result)
 	err := col.FindOne(ctx, condition).Decode(&result)
 	if err != nil {
-		fmt.Println(err.Error())
+		// fmt.Println(err.Error())
 		return false, err
 	}
 	return true, nil
