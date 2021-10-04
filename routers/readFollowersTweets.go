@@ -18,7 +18,7 @@ func ReadFollowersTweets(w http.ResponseWriter, r *http.Request) {
 	}
 	page, err := strconv.Atoi(r.URL.Query().Get("page"))
 	if err != nil {
-		http.Error(w, "You must send a page number as an int greater than 0", http.StatusBadRequest)
+		http.Error(w, "You must send a page number as an int greater than 0"+err.Error(), http.StatusBadRequest)
 		return
 	}
 	response, correct := db.ReadFollowersTweets(IDUser, page)
@@ -28,7 +28,7 @@ func ReadFollowersTweets(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(response)
 }
 
