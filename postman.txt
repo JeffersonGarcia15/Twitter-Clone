@@ -65,3 +65,8 @@ DeleteTweet (
 Avatar & Banner (
     use formData
 )
+
+Unfollow (
+    id of the other user
+    add the id on the params because it needs to go on the URL
+)

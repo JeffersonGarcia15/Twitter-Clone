@@ -32,6 +32,8 @@ func Urls() {
 	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET")
 
 	router.HandleFunc("/follow", middlew.CheckDB(middlew.ValidJWT(routers.JoinRelation))).Methods("POST")
+	router.HandleFunc("/unfollow", middlew.CheckDB(middlew.ValidJWT(routers.DeleteFollow))).Methods("DELETE")
+
 	
 
 
