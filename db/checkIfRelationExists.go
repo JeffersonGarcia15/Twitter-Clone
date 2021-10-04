@@ -26,7 +26,7 @@ func CheckIfRelationExists(t models.Relation) (bool, error) {
 	}
 
 	var result models.Relation
-	fmt.Println(result)
+	// fmt.Println(result)
 	err := col.FindOne(ctx, condition).Decode(&result)
 	if err != nil {
 		fmt.Println(err.Error())

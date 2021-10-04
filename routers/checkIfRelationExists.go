@@ -24,6 +24,8 @@ func CheckIfRelationExists(w http.ResponseWriter, r *http.Request) {
 
 	status, err := db.CheckIfRelationExists(t)
 	if err != nil || !status {
+		response.Status = false
+	} else {
 		response.Status = true
 	}
 
