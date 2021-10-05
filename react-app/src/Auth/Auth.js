@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSearch, faUsers, faComment } from "@fortawesome/free-solid-svg-icons" 
+import { faSearch, faUsers, faComment } from "@fortawesome/free-solid-svg-icons"
 import LogoWhiteTwitter from "../assets/png/logo-white.png"
 import LogoTwitter from "../assets/png/logo.png"
+import BasicModal from "../components/Modal/BasicModal"
 
 import "./Auth.scss"
 
 
 export default function Auth() {
+    const [showModal, setShowModal] = useState(true)
+    const [contentModal, setContentModal] = useState(null)
     return (
-        <Container className="auth" fluid>
-            <Row>
-                <LeftComponent></LeftComponent>
-                <RightComponent></RightComponent>
-            </Row>
-        </Container>
+        <>
+            <Container className="auth" fluid>
+                <Row>
+                    <LeftComponent></LeftComponent>
+                    <RightComponent></RightComponent>
+                </Row>
+            </Container>
+            <BasicModal show={showModal} setShow={setShowModal}>
+                <div>
+                    <h2>Modal Content</h2>
+                </div>
+
+            </BasicModal>
+        </>
     )
 }
 
@@ -25,7 +36,7 @@ function LeftComponent() {
             <img src={LogoTwitter} alt="Twitter" />
             <div>
                 <h2>
-                    <FontAwesomeIcon icon={faSearch}/> Twitter. Follow your interests.
+                    <FontAwesomeIcon icon={faSearch} /> Twitter. Follow your interests.
                 </h2>
                 <h2>
                     <FontAwesomeIcon icon={faUsers} /> Hear what people are talking about.
