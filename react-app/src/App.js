@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import Auth from './Auth'
 
 export default function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({ name: "Jefferson"} )
 
   return (
     <div>
-      {user ? <h1>You are logged in</h1> : <h1>You are not logged in</h1>}
+      {user ? (
+        <div>
+          <Auth />
+        </div>
+      ) : <h1>You are not logged in</h1>}
       
     </div>
   )
