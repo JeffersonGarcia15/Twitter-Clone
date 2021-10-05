@@ -38,3 +38,18 @@ code {
   }
 
 }
+
+input.form-control,
+textarea.form-control {
+  background-color: $background-dark-light;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid $border-grey;
+  color: $font-light !important;
+
+  &:focus {
+    background-color: $background-dark-light;
+    box-shadow: none;
+    border-bottom: 1px solid $border-primary;
+  }
+}
