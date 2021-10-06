@@ -1,4 +1,4 @@
-import { API_HOST } from "../utils/constants"
+import { API_HOST, TOKEN } from "../utils/constants"
 
 export function signUpApi(user) {
     const url = `${API_HOST}/signup`
@@ -37,6 +37,7 @@ export function loginApi(user) {
         email: user.email.toLowerCase(),
     }
     const params = {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -53,4 +54,8 @@ export function loginApi(user) {
     }).catch(error => {
         return error
     })
+}
+
+export function setTokenApi(token) {
+    localStorage.setItem(TOKEN, token)
 }

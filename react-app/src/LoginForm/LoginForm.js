@@ -3,7 +3,7 @@ import { Form, Button, Spinner } from "react-bootstrap"
 import { values, size } from 'lodash'
 import { isEmailValid } from "../utils/validations"
 import { toast } from "react-toastify"
-import { loginApi } from "../api/auth"
+import { loginApi, setTokenApi } from "../api/auth"
 
 import "./LoginForm.scss"
 
@@ -33,10 +33,14 @@ export default function LoginForm() {
                         toast.warning(response.message)
                     }
                     else {
+                        toast.success("Registration completed successfully.")
+                        setTokenApi(response.token)
                         console.log(response.token)
                     }
                 }).catch(() => {
                     toast.error("Server crashed. Please try again later")
+                }).finally(() => {
+                    setSignInLoading(false)
                 })
             }
         }
