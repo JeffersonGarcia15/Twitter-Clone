@@ -7,7 +7,8 @@ import { loginApi, setTokenApi } from "../api/auth"
 
 import "./LoginForm.scss"
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+    const { setRefreshCheckLogin } = props
     const [formData, setFormData] = useState(initialFormValue())
     const [signInLoading, setSignInLoading] = useState(false)
 
@@ -35,6 +36,7 @@ export default function LoginForm() {
                     else {
                         toast.success("Registration completed successfully.")
                         setTokenApi(response.token)
+                        setRefreshCheckLogin(true)
                         console.log(response.token)
                     }
                 }).catch(() => {
