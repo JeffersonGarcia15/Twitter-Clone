@@ -5,7 +5,7 @@ import "./Home.scss"
 
 export default function Home() {
     return (
-                <BasicLayout>
+                <BasicLayout className='home'>
                     <h2>Hello from the home page</h2>
 
                 </BasicLayout>
