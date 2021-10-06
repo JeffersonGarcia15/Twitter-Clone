@@ -4,6 +4,7 @@ import { values, size } from 'lodash'
 import { toast } from "react-toastify"
 import { isEmailValid } from "../../utils/validations"
 import { signUpApi } from "../../api/auth"
+// import { Redirect, useHistory } from 'react-router-dom';
 
 import "./SignUpForm.scss"
 
@@ -11,6 +12,7 @@ export default function SignUpForm(props) {
     const { setShowModal } = props
     const [formData, setFormData] = useState(initialFormValue())
     const [signUpLoading, setSignUpLoading] = useState(false)
+    // const history = useHistory()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -42,9 +44,11 @@ export default function SignUpForm(props) {
                         toast.warning(response.message)
                     }
                     else {
-                        toast.success("Registration completed successfully.")
-                        setShowModal(false)
-                        setFormData(initialFormValue())
+                        toast.success("Registration completed successfully.");
+                        setShowModal(false);
+                        setFormData(initialFormValue());
+                        // history.push('/explore')
+                        
                     }
                 }).catch(() => {
                     return toast.error("Server crashed, please try again later!")
@@ -70,7 +74,7 @@ export default function SignUpForm(props) {
                             <Form.Control type='text' placeholder='Name' name="name" defaultValue={formData.name}></Form.Control>
                         </Col>
                         <Col>
-                            <Form.Control type='text' placeholder='Last Name' name='lastName' defaultValue={formData.lastName}></Form.Control>
+                            <Form.Control type='text' placeholder='Last Name' name='last' defaultValue={formData.last}></Form.Control>
                         </Col>
                     </Row>
                 </Form.Group>
@@ -98,7 +102,7 @@ export default function SignUpForm(props) {
 function initialFormValue() {
     return {
         name: "",
-        lastName: "",
+        last: "",
         email: "",
         password: "",
         repeatPassword: "",

@@ -11,9 +11,9 @@ export default function App() {
   const [refreshCheckLogin, setRefreshCheckLogin] = useState(false)
 
   useEffect(() => {
-    setUser(isUserLoggedInApi())
-    setRefreshCheckLogin(false)
-    setLoadUser(true)
+    setUser(isUserLoggedInApi());
+    setRefreshCheckLogin(false);
+    setLoadUser(true);
   }, [refreshCheckLogin])
 
   if(!loadUser) return null
