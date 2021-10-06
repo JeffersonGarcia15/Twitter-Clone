@@ -6,6 +6,7 @@ import LogoWhiteTwitter from "../assets/png/logo-white.png"
 import LogoTwitter from "../assets/png/logo.png"
 import BasicModal from "../components/Modal/BasicModal"
 import SignUpForm from "../components/SignUpForm"
+import LoginForm from "../LoginForm"
 
 import "./Auth.scss"
 
@@ -63,7 +64,7 @@ function RightComponent(props) {
                 <Button variant="primary" onClick={() => openModal(<SignUpForm setShowModal={setShowModal}/>)}>
                     Register
                 </Button>
-                <Button variant="outline-primary" onClick={() => openModal(<h2>Login Form</h2>)}>
+                <Button variant="outline-primary" onClick={() => openModal(<LoginForm />)}>
                     Sign In
                 </Button>
             </div>

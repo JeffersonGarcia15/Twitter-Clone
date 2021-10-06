@@ -28,3 +28,29 @@ export function signUpApi(user) {
         return error
     })
 }
+
+export function loginApi(user) {
+    const url = `${API_HOST}/login`
+
+    const data = {
+        ...user,
+        email: user.email.toLowerCase(),
+    }
+    const params = {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+
+    return fetch(url, params).then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            return response.json()
+        }
+        return { code: 404, message: "Email or password are incorrect" }
+    }).then(result => {
+        return result
+    }).catch(error => {
+        return error
+    })
+}
