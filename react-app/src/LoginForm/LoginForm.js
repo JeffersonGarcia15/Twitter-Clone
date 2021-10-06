@@ -34,7 +34,7 @@ export default function LoginForm(props) {
                         toast.warning(response.message)
                     }
                     else {
-                        toast.success("Registration completed successfully.")
+                        toast.success("Login completed successfully.")
                         setTokenApi(response.token)
                         setRefreshCheckLogin(true)
                         console.log(response.token)
