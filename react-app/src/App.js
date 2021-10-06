@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={user}>
-      {user ? <Routing></Routing>
+      {user ? <Routing setRefreshCheckLogin={setRefreshCheckLogin}></Routing>
       : <Auth setRefreshCheckLogin={setRefreshCheckLogin}/>}
       <ToastContainer 
       position="top-right" 
