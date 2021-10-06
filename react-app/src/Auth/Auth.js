@@ -6,11 +6,13 @@ import LogoWhiteTwitter from "../assets/png/logo-white.png"
 import LogoTwitter from "../assets/png/logo.png"
 import BasicModal from "../components/Modal/BasicModal"
 import SignUpForm from "../components/SignUpForm"
+import LoginForm from "../LoginForm"
 
 import "./Auth.scss"
 
 
-export default function Auth() {
+export default function Auth(props) {
+    const { setRefreshCheckLogin } = props
     const [showModal, setShowModal] = useState(false)
     const [contentModal, setContentModal] = useState(null)
 
@@ -23,7 +25,7 @@ export default function Auth() {
             <Container className="auth" fluid>
                 <Row>
                     <LeftComponent></LeftComponent>
-                    <RightComponent openModal={openModal} setShowModal={setShowModal}></RightComponent>
+                    <RightComponent openModal={openModal} setShowModal={setShowModal} setRefreshCheckLogin={setRefreshCheckLogin}></RightComponent>
                 </Row>
             </Container>
             <BasicModal show={showModal} setShow={setShowModal}>
@@ -53,7 +55,7 @@ function LeftComponent() {
 }
 
 function RightComponent(props) {
-    const { openModal, setShowModal } = props
+    const { openModal, setShowModal, setRefreshCheckLogin } = props
     return (
         <Col className="auth__right" xs={6}>
             <div>
@@ -63,7 +65,7 @@ function RightComponent(props) {
                 <Button variant="primary" onClick={() => openModal(<SignUpForm setShowModal={setShowModal}/>)}>
                     Register
                 </Button>
-                <Button variant="outline-primary" onClick={() => openModal(<h2>Login Form</h2>)}>
+                <Button variant="outline-primary" onClick={() => openModal(<LoginForm setRefreshCheckLogin={setRefreshCheckLogin} />)}>
                     Sign In
                 </Button>
             </div>
