@@ -4,12 +4,15 @@ import BasicLayout from '../../layout/BasicLayout'
 import { useParams } from 'react-router-dom'
 import { getUserApi } from '../../api/user'
 import { toast } from 'react-toastify'
+import BannerAvatar from '../../components/User/BannerAvatar'
 
 import "./User.scss"
 
 export default function User() {
     const { id } = useParams()
     const [user, setUser] = useState(null)
+
+    console.log(user)
 
     useEffect(() => {
         getUserApi(id).then(response => {
@@ -25,9 +28,12 @@ export default function User() {
     return (
         <BasicLayout className="user"> 
             <div className="user__title">
-                <h2>React</h2>
+                <h2>{
+                    user ? `${user.name} ${user.last}`
+                    : "User not found"
+                    }</h2>
             </div>
-            <div>Banner</div>
+            <BannerAvatar user={user}/>
             <div>Information</div>
             <div className='user__tweets'>Tweet List</div>
         </BasicLayout>
