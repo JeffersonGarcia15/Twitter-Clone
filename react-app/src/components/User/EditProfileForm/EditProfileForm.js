@@ -1,12 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import DatePicker from "react-datepicker"
+import { useDropzone } from 'react-dropzone'
+import { API_HOST } from "../../../utils/constants"
 
 import "./EditProfileForm.scss"
 
 export default function EditProfileForm(props) {
     const { setShowModal, user } = props
     const [formData, setFormData] = useState(initialValue(user));
+    const [bannerUrl, setBannerUrl] = useState(
+        user?.banner ? `${API_HOST}/getBanner?id=${user.id}` : null
+    )
+
+    const onDropBanner = useCallback(acceptedFile => {
+        console.log(acceptedFile)
+    })
+    const { getRootProps: getRootBannerProps, getInputProps: getInputBannerProps } = useDropzone({
+        accept: "image/jpeg, image/png",
+        noKeyboard: true,
+        multiple: false,
+        onDrop: onDropBanner,
+    })
 
     const onSubmit = e => {
         e.preventDefault()
@@ -17,8 +32,13 @@ export default function EditProfileForm(props) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+
+
     return (
         <div className="edit-user-form">
+            <div className="banner" style={{ backgroundImage: `url('${bannerUrl}')` }} {...getRootBannerProps()}>
+                <input {...getInputBannerProps()}></input>
+            </div>
             <Form onSubmit={onSubmit}>
                 <Form.Group>
                     <Row>
