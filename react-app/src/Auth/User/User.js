@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom'
 import { getUserApi } from '../../api/user'
 import { toast } from 'react-toastify'
 import BannerAvatar from '../../components/User/BannerAvatar'
+import userAuth from '../../hooks/userAuth'
 
 import "./User.scss"
 
 export default function User() {
     const { id } = useParams()
     const [user, setUser] = useState(null)
-
-    console.log(user)
+    const sessionUser = userAuth()
 
     useEffect(() => {
         getUserApi(id).then(response => {
@@ -33,7 +33,7 @@ export default function User() {
                     : "User not found"
                     }</h2>
             </div>
-            <BannerAvatar user={user}/>
+            <BannerAvatar user={user} sessionUser={sessionUser}/>
             <div>Information</div>
             <div className='user__tweets'>Tweet List</div>
         </BasicLayout>
