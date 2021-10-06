@@ -37,7 +37,6 @@ export default function LoginForm(props) {
                         toast.success("Login completed successfully.")
                         setTokenApi(response.token)
                         setRefreshCheckLogin(true)
-                        console.log(response.token)
                     }
                 }).catch(() => {
                     toast.error("Server crashed. Please try again later")

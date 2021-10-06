@@ -66,6 +66,7 @@ export function getTokenApi() {
 }
 
 export function logoutApi() {
+    window.history.replaceState(null, "New Page Title", "/")
     localStorage.removeItem(TOKEN)
 }
  

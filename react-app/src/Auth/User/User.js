@@ -6,6 +6,7 @@ import { getUserApi } from '../../api/user'
 import { toast } from 'react-toastify'
 import BannerAvatar from '../../components/User/BannerAvatar'
 import userAuth from '../../hooks/userAuth'
+import InfoUser from '../../components/User/InfoUser'
 
 import "./User.scss"
 
@@ -34,7 +35,7 @@ export default function User() {
                     }</h2>
             </div>
             <BannerAvatar user={user} sessionUser={sessionUser}/>
-            <div>Information</div>
+            <InfoUser user={user} />
             <div className='user__tweets'>Tweet List</div>
         </BasicLayout>
     )

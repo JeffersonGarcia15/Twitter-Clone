@@ -5,7 +5,7 @@ import LeftMenu from "../../components/LeftMenu"
 import "./BasicLayout.scss"
 
 export default function BasicLayout(props) {
-    const { className, children, setRefreshCheckLogin } = props
+    const { className, setRefreshCheckLogin, children } = props
     return (
         <Container className={`basic-layout ${className}`}>
             <Row>

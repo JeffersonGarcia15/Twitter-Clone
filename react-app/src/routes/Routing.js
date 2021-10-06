@@ -5,7 +5,7 @@ import {
     Route,
 } from "react-router-dom"
 
-import { map } from "lodash"
+// import { map } from "lodash"
 import configRouting from "./configRouting"
 
 export default function Routing(props) {

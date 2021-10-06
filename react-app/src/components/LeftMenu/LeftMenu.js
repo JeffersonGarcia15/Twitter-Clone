@@ -11,12 +11,11 @@ import "./LeftMenu.scss"
 
 export default function LeftMenu(props) {
     const { setRefreshCheckLogin } = props
+    console.log(props)
     const user = userAuth()
-
-
     const logout = () => {
-        logoutApi()
-        setRefreshCheckLogin(true)
+        logoutApi();
+        setRefreshCheckLogin(true);
     }
     return (
         <div className="left-menu">
