@@ -3,6 +3,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import DatePicker from "react-datepicker"
 import { useDropzone } from 'react-dropzone'
 import { API_HOST } from "../../../utils/constants"
+import { Camera } from "../../../utils/icons"
 
 import "./EditProfileForm.scss"
 
@@ -12,9 +13,14 @@ export default function EditProfileForm(props) {
     const [bannerUrl, setBannerUrl] = useState(
         user?.banner ? `${API_HOST}/getBanner?id=${user.id}` : null
     )
+    const [bannerFile, setBannerFile] = useState(null)
 
     const onDropBanner = useCallback(acceptedFile => {
-        console.log(acceptedFile)
+        const file = acceptedFile[0]
+        setBannerUrl(URL.createObjectURL(file))
+        setBannerFile(file)
+        // console.log(URL.createObjectURL(file))
+        // console.log(acceptedFile)
     })
     const { getRootProps: getRootBannerProps, getInputProps: getInputBannerProps } = useDropzone({
         accept: "image/jpeg, image/png",
@@ -38,6 +44,7 @@ export default function EditProfileForm(props) {
         <div className="edit-user-form">
             <div className="banner" style={{ backgroundImage: `url('${bannerUrl}')` }} {...getRootBannerProps()}>
                 <input {...getInputBannerProps()}></input>
+                <Camera />
             </div>
             <Form onSubmit={onSubmit}>
                 <Form.Group>
