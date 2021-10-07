@@ -11,7 +11,7 @@ export default function TweetModal(props) {
     const { show, setShow } = props
     const [message, setMessage] = useState("")
 
-    const maxLength = 28
+    const maxLength = 280
 
     const onSubmit = (e) => {
         e.preventDefault()

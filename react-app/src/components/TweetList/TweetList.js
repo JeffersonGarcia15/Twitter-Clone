@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Image } from "react-bootstrap";
-import { map } from "lodash";
 import moment from "moment";
-import AvatarNoFound from "../../assets/png/avatar-no-found.png";
+import AvatarNotFound from "../../assets/png/avatar-no-found.png";
 import { API_HOST } from "../../utils/constants";
+import { replaceURLWithHTMLLinks } from '../../utils/functions'
 import { getUserApi } from "../../api/user";
+
+import "./TweetList.scss"
 
 export default function TweetList(props) {
     const { tweets } = props;
@@ -20,5 +22,27 @@ export default function TweetList(props) {
 
 function Tweet(props) {
     const { tweet } = props;
-    return <h2>{tweet.body}</h2>
+    const [userInfo, setUserInfo] = useState(null)
+    const [avatarUrl, setAvatarUrl] = useState(null)
+
+    // console.log(tweet)
+
+    useEffect(() => {
+        getUserApi(tweet.userid).then(response => {
+            setUserInfo(response)
+            setAvatarUrl(response?.avatar ? `${API_HOST}/getAvatar?id=${response?.id}` : AvatarNotFound)
+        })
+    }, [tweet])
+    return (
+        <div className='tweet'>
+            <Image className='avatar' src={avatarUrl} roundedCircle/>
+            <div>
+                <div className='name'>
+                    {userInfo?.name} {userInfo?.last}
+                    <span>{moment(tweet.date).calendar()}</span>
+                </div>
+                    <div dangerouslySetInnerHTML={{ __html: replaceURLWithHTMLLinks(tweet.body) }} />
+            </div>
+        </div>
+    )
 }

@@ -18,6 +18,8 @@ export default function User(props) {
     const { id } = useParams()
     const [user, setUser] = useState(null)
     const [tweets, setTweets] = useState(null)
+    const [page, setPage] = useState(1)
+    const [loadingTweets, setLoadingTweets] = useState(false)
     const sessionUser = userAuth()
 
     useEffect(() => {
@@ -39,6 +41,22 @@ export default function User(props) {
         })
     }, [id])
 
+    const moreTweets = () => {
+        const currentPage = page + 1
+        setLoadingTweets(true)
+
+        getUserTweetsApi(id, currentPage).then(response => {
+            if(!response) {
+                setLoadingTweets(0)
+            }
+            else {
+                setTweets([...tweets, ...response])
+                setPage(currentPage)
+                setLoadingTweets(false)
+            }
+        })
+    }
+
     return (
         <BasicLayout className="user"> 
             <div className="user__title">
@@ -52,9 +70,20 @@ export default function User(props) {
             <div className='user__tweets'>
                 <h3>Tweets</h3>
                 {tweets && <TweetList tweets={tweets} />}
+                <Button onClick={moreTweets}>
+                    {!loadingTweets ? (
+                        loadingTweets !== 0 && "Load more Tweets"
+                    ) : (
+                        <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            arian-hidden="true"
+                        />
+                    )}
+                </Button>
             </div>
         </BasicLayout>
     )
 }
-
-// export default withRouter(User)
