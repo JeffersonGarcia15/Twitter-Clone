@@ -1,0 +1,40 @@
+@import "../../scss/index.scss";
+
+.users {
+  &__title {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+
+
+  }
+
+  &__options {
+    display: flex !important;
+
+    .btn.btn-primary {
+      background-color: transparent !important;
+      font-weight: bold;
+      border: 0;
+      border-bottom: 1px solid $border-grey;
+      padding: 15px 0;
+      border-radius: 0;
+
+      &:hover {
+        background-color: rgba(29, 161, 242, 0.1) !important;
+      }
+      &.active {
+        border-bottom: 3px solid $primary;
+      }
+    }
+  }
+
+
+}

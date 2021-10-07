@@ -13,7 +13,6 @@ import "./LeftMenu.scss"
 export default function LeftMenu(props) {
     const { setRefreshCheckLogin } = props
     const location = useLocation()
-    console.log('LeftMenu', props)
     const user = userAuth()
     const logout = () => {
         logoutApi();

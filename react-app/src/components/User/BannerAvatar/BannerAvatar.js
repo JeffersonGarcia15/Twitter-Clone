@@ -13,8 +13,6 @@ export default function BannerAvatar(props) {
     const bannerUrl = user?.banner ? `${API_HOST}/getBanner?id=${user.id}` : null
     const avatarUrl = user?.banner ? `${API_HOST}/getAvatar?id=${user.id}` : AvatarNotFound
 
-    console.log('BANNERAVATAR', props)
-
     const [showModal, setShowModal] = useState(false)
     const [following, setFollowing] = useState(null)
     const [reloadFollow, setReloadFollow] = useState(false)
