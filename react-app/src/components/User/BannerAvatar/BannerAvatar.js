@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import { API_HOST } from '../../../utils/constants'
 import ConfigModal from '../../Modal/ConfigModal'
 import AvatarNotFound from "../../../assets/png/avatar-no-found.png"
 import EditProfileForm from '../../User/EditProfileForm'
+import { checkFollowApi, followUserApi } from '../../../api/follow'
 
 import "./BannerAvatar.scss"
 
@@ -13,6 +14,26 @@ export default function BannerAvatar(props) {
     const avatarUrl = user?.banner ? `${API_HOST}/getAvatar?id=${user.id}` : AvatarNotFound
 
     const [showModal, setShowModal] = useState(false)
+    const [following, setFollowing] = useState(null)
+    const [reloadFollow, setReloadFollow] = useState(false)
+
+    useEffect(() => {
+        checkFollowApi(user?.id).then((response) => {
+            if(response?.status) {
+                setFollowing(true)
+            }
+            else {
+                setFollowing(false)
+            }
+        })
+        setReloadFollow(false)
+    }, [user?.id, reloadFollow])
+
+    const followUser = () => {
+        followUserApi(user?.id).then(() => {
+            setReloadFollow(true)
+        })
+    }
 
     return (
         <div className="banner-avatar" style={{ backgroundImage: `url('${bannerUrl}')` }}>
@@ -22,8 +43,11 @@ export default function BannerAvatar(props) {
                     {sessionUser?._id === user.id &&
                         <Button onClick={() => setShowModal(true)}>Edit Profile</Button>
                     }
-                {sessionUser?._id !== user.id && 
-                    <Button>Follow</Button>
+                {sessionUser?._id !== user.id && (
+                    following !== null && (
+                            (following ? <Button>Following</Button> : <Button onClick={followUser}>Follow</Button>)
+                    )
+                )
                 }
                 </div>
             )}
