@@ -29,7 +29,7 @@ export function addTweetApi(message) {
 }
 
 export function getUserTweetsApi(userId, page) {
-    const url = `${API_HOST}/gettweet?id=${userId}&page=${page}`;
+    const url = `${API_HOST}/gettweet?id=${userId}&pagination=${page}`;
 
     const params = {
         headers: {
