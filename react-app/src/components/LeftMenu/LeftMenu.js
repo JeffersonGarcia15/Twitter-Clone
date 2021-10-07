@@ -19,18 +19,18 @@ export default function LeftMenu(props) {
         setRefreshCheckLogin(true);
     }
 
-    const LogoutButton = () => {
-        if(location.pathname === '/') {
-            return (
-                <Link to="" onClick={logout}>
-                    <FontAwesomeIcon icon={faPowerOff} /> Logout
-                </Link>
-            )
-        }
-        else {
-            return <a disabled >Logout From The Home Page</a>
-        }
-    }
+    // const LogoutButton = () => {
+    //     if(location.pathname === '/') {
+    //         return (
+    //             <Link to="" onClick={logout}>
+    //                 <FontAwesomeIcon icon={faPowerOff} /> Logout
+    //             </Link>
+    //         )
+    //     }
+    //     else {
+    //         return <a disabled >Logout From The Home Page</a>
+    //     }
+    // }
 
     const [showModal, setShowModal] = useState(false)
     return (
@@ -46,10 +46,10 @@ export default function LeftMenu(props) {
             <Link to={`/${user?._id}`}>
                 <FontAwesomeIcon icon={faUser} /> Profile
             </Link>
-            {/* <Link to="" onClick={logout}>
+            <Link to="" onClick={logout}>
                 <FontAwesomeIcon icon={faPowerOff} /> Logout
-            </Link> */}
-            <LogoutButton />
+            </Link>
+            {/* <LogoutButton /> */}
 
             <Button onClick={() => setShowModal(true)}>Tweet</Button>
 
