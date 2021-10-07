@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 import { Close } from "../../../utils/icons"
+import classNames from 'classnames'
 
 import "./TweetModal.scss"
 
 export default function TweetModal(props) {
     const { show, setShow } = props
     const [message, setMessage] = useState("")
+
+    const maxLength = 280
 
     const onSubmit = (e) => {
         e.preventDefault()

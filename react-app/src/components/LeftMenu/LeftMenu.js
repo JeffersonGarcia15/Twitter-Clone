@@ -33,7 +33,7 @@ export default function LeftMenu(props) {
         }
     }
 
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
     return (
         <div className="left-menu">
             <img src={LogoWhite} alt="Twitter" className="logo" />
