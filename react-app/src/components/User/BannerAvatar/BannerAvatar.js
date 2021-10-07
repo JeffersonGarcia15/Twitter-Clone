@@ -9,9 +9,11 @@ import { checkFollowApi, followUserApi, unfollowUserApi } from '../../../api/fol
 import "./BannerAvatar.scss"
 
 export default function BannerAvatar(props) {
-    const { user, sessionUser } = props
+    const { user, sessionUser, setRefreshCheckLogin } = props
     const bannerUrl = user?.banner ? `${API_HOST}/getBanner?id=${user.id}` : null
     const avatarUrl = user?.banner ? `${API_HOST}/getAvatar?id=${user.id}` : AvatarNotFound
+
+    console.log('BANNERAVATAR', props)
 
     const [showModal, setShowModal] = useState(false)
     const [following, setFollowing] = useState(null)
@@ -30,6 +32,10 @@ export default function BannerAvatar(props) {
         }
         setReloadFollow(false)
     }, [user?.id, reloadFollow])
+
+    useEffect(() => {
+        setRefreshCheckLogin(true)
+    }, [])
 
     const followUser = () => {
         followUserApi(user?.id).then(() => {

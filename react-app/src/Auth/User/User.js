@@ -10,7 +10,9 @@ import InfoUser from '../../components/User/InfoUser'
 
 import "./User.scss"
 
-export default function User() {
+export default function User(props) {
+    // console.log('USER', props)
+    const { setRefreshCheckLogin } = props
     const { id } = useParams()
     const [user, setUser] = useState(null)
     const sessionUser = userAuth()
@@ -34,7 +36,7 @@ export default function User() {
                     : "User not found"
                     }</h2>
             </div>
-            <BannerAvatar user={user} sessionUser={sessionUser}/>
+            <BannerAvatar setRefreshCheckLogin={setRefreshCheckLogin} user={user} sessionUser={sessionUser}/>
             <InfoUser user={user} />
             <div className='user__tweets'>Tweet List</div>
         </BasicLayout>
