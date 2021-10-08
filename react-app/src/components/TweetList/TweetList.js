@@ -31,8 +31,10 @@ function Tweet(props) {
         getUserApi(tweet.userid).then(response => {
             setUserInfo(response)
             setAvatarUrl(response?.avatar ? `${API_HOST}/getAvatar?id=${response?.id}` : AvatarNotFound)
+        }).catch(error => {
+            return error
         })
-    }, [tweet])
+    }, [tweet, userInfo, avatarUrl])
     return (
         <div className='tweet'>
             <Image className='avatar' src={avatarUrl} roundedCircle/>
