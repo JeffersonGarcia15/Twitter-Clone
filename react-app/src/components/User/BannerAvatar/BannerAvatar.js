@@ -29,7 +29,7 @@ export default function BannerAvatar(props) {
             })    
         }
         setReloadFollow(false)
-    }, [user?.id, reloadFollow])
+    }, [user, reloadFollow])
 
     useEffect(() => {
         setRefreshCheckLogin(true)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {  Button } from "react-bootstrap"
 import { Link, useLocation } from 'react-router-dom'
 import LogoWhite from "../../assets/png/logo-white.png"
