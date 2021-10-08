@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {  Button } from "react-bootstrap"
 import { Link, useLocation } from 'react-router-dom'
 import LogoWhite from "../../assets/png/logo-white.png"
@@ -13,25 +13,24 @@ import "./LeftMenu.scss"
 export default function LeftMenu(props) {
     const { setRefreshCheckLogin } = props
     const location = useLocation()
-    console.log('LeftMenu', props)
     const user = userAuth()
     const logout = () => {
         logoutApi();
         setRefreshCheckLogin(true);
     }
 
-    const LogoutButton = () => {
-        if(location.pathname === '/') {
-            return (
-                <Link to="" onClick={logout}>
-                    <FontAwesomeIcon icon={faPowerOff} /> Logout
-                </Link>
-            )
-        }
-        else {
-            return <a disabled >Logout From The Home Page</a>
-        }
-    }
+    // const LogoutButton = () => {
+    //     if(location.pathname === '/') {
+    //         return (
+    //             <Link to="" onClick={logout}>
+    //                 <FontAwesomeIcon icon={faPowerOff} /> Logout
+    //             </Link>
+    //         )
+    //     }
+    //     else {
+    //         return <a disabled >Logout From The Home Page</a>
+    //     }
+    // }
 
     const [showModal, setShowModal] = useState(false)
     return (
@@ -47,10 +46,10 @@ export default function LeftMenu(props) {
             <Link to={`/${user?._id}`}>
                 <FontAwesomeIcon icon={faUser} /> Profile
             </Link>
-            {/* <Link to="" onClick={logout}>
+            <Link to="" onClick={logout}>
                 <FontAwesomeIcon icon={faPowerOff} /> Logout
-            </Link> */}
-            <LogoutButton />
+            </Link>
+            {/* <LogoutButton /> */}
 
             <Button onClick={() => setShowModal(true)}>Tweet</Button>
 
