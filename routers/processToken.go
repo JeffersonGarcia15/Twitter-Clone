@@ -13,7 +13,7 @@ import (
 /*
 ProcessToken process the token to extract the information
 */
-var dotenv = db.GoDotEnvVariable("MY_SECRET")
+// var dotenv = db.GoDotEnvVariable("MY_SECRET")
 
 /*
 Email is the Email value in all endpoints
@@ -28,7 +28,7 @@ ID is the ID value in all endpoints
 var IDUser string
 
 func ProcessToken(tk string) (*models.Claim, bool, string, error) {
-	mySecret := []byte(dotenv)
+	mySecret := []byte("learningaboutgobybuildingatwittercloneusingmongodb")
 
 	claims := &models.Claim{}
 

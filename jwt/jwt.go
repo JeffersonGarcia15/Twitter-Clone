@@ -4,7 +4,6 @@ import (
 	"time"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/JeffersonGarcia15/Twitter-Clone/models"
-	"github.com/JeffersonGarcia15/Twitter-Clone/db"
 
 
 
@@ -14,10 +13,10 @@ import (
 GenerateJWT generates the encryption with JWT
 */
 
-var dotenv = db.GoDotEnvVariable("MY_SECRET")
+// var dotenv = db.GoDotEnvVariable("MY_SECRET")
 
 func GenerateJWT(t models.User) (string, error) {
-	mySecret := []byte(dotenv)
+	mySecret := []byte("learningaboutgobybuildingatwittercloneusingmongodb")
 
 	payload := jwt.MapClaims{
 		"email": t.Email,
