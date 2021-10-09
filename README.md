@@ -4,14 +4,32 @@
 
 [Twitter-Clone](https://twitter-jefferson.netlify.app), inspired by [twitter](https://twitter.com/?lang=en), is a web application that allows users to post tweets and follow users as well as filter user's based on new users or users that you currently follow, you also have freedom to edit your profile as well as your avatar and banner pictures while getting a preview of how they will look like before you click submit!
 
+#
+
+## Quick Tour
+
+* Register Process and Validations
+![Sign Up](https://mylovetable.s3.us-east-2.amazonaws.com/register.gif)
+* Login Process and Validations
+![Login](https://mylovetable.s3.us-east-2.amazonaws.com/loging.gif)
+* Edit Profile Process
+![Edit](https://mylovetable.s3.us-east-2.amazonaws.com/edit.gif)
+* Tweet
+![Tweet](https://mylovetable.s3.us-east-2.amazonaws.com/tweet.gif)
+* Search, filter and home page
+![Search](https://mylovetable.s3.us-east-2.amazonaws.com/search.gif)
+
+#
 ## Table of content
 
 1. [Getting Started](https://github.com/JeffersonGarcia15/Twitter-Clone#getting-started)
-2. [Technologies Used](https://github.com/JeffersonGarcia15/Astrogram#technologies-used)
+2. [Technologies Used](https://github.com/JeffersonGarcia15/Twitter-Clone#technologies-used)
 3. [Key Features](https://github.com/JeffersonGarcia15/Twitter-Clone#key-features)
 4. [Code Snippets](https://github.com/JeffersonGarcia15/Twitter-Clone#code-snippets)
 5. [Wiki](https://github.com/JeffersonGarcia15/Twitter-Clone#wikii)
 6. [Future Goals](https://github.com/JeffersonGarcia15/Twitter-Clone#future-goals)
+6. [Conclusion](https://github.com/JeffersonGarcia15/Twitter-Clone#conclusion)
+
 
 #
 
@@ -227,9 +245,68 @@ func ReadUsersInfo(ID string, page int64, search string, searchType string) ([]*
 
 ```
 
+- Search-Filer from frontend. In order to accomplish this, I had to use the useLocation hook that Chris Oney recommended me, with this I was able to obtain the URL string in real time, and manipulate the params that I was going to then send to the backend. I also had to use the library queryString so that I could get the variables from the url, and match the params that the backend was looking for.
+
+``` js
+    const onSearch = useDebouncedCallback((value) => {
+        setUsers(null)
+        history.push({ search: queryString.stringify({ ...params, search: value, page: 1 }) })
+    }, 200)
+
+    useEffect(() => {
+        getFollowsApi(queryString.stringify(params)).then(response => {
+            if(params.page == 1) {
+                if (!response.length) {
+                    setUsers([])
+                }
+                else {
+                    setUsers(response)
+                }
+            }
+            else {
+                if(!response) {
+                    setBtnLoading(0)
+                }
+                else {
+                    setUsers([...users, ...response])
+                    setBtnLoading(false)
+                }
+            }
+        }).catch(() => {
+            setUsers([])
+        })
+    }, [location])
+
+    const onChangeType = searchType => {
+        setUsers(null)
+        if (searchType === "new") {
+            setSearchUserType("new")
+        }
+        else {
+            setSearchUserType("follow")
+        }
+        history.push({
+            search: queryString.stringify({ searchType: searchType, page: 1, search: "" })
+        })
+    }
+
+    const moreUsers = () => {
+        setBtnLoading(true)
+        const newPage = parseInt(params.page, 10) + 1
+        history.push({
+            search: queryString.stringify({...params, page: newPage})
+        })
+
+    }
+```
+
 ## Future Goals
 
 - Full CRUD for Tweets
 - Hashtags
 - Tweets with photos
 - Saved Tweets
+
+## Conclusion
+
+This web application was built from scratch with 0 lines of code and 0 folders set up. It was definitely a challenge as I did not have any experience with any compiled languages, so I had to learn Go, read about MongoDB which I did not know either, and read about JWT which was a type of authentication I had no experience with. It was a challenge that took more roughly a month, and even though there is room for improvement, I am very happy with the results as I now feel like I know a good amount of Go and mongoDB meaning that I feel like I know a good amount of a compiled language and a nonSQL database. 
