@@ -69,6 +69,9 @@
                 &:first-of-type {
                     margin-bottom: 20px;
                 }
+                &:last-child {
+                    margin-top: 20px;
+                }
             }
         }
     }
