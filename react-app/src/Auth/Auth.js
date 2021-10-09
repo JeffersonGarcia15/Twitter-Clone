@@ -7,6 +7,7 @@ import LogoTwitter from "../assets/png/logo.png"
 import BasicModal from "../components/Modal/BasicModal"
 import SignUpForm from "../components/SignUpForm"
 import LoginForm from "../LoginForm"
+import Demo from './Demo'
 
 import "./Auth.scss"
 
@@ -68,6 +69,9 @@ function RightComponent(props) {
                 <Button variant="outline-primary" onClick={() => openModal(<LoginForm setRefreshCheckLogin={setRefreshCheckLogin} />)}>
                     Sign In
                 </Button>
+                {/* <Button variant="outline-primary"> */}
+                    <Demo setRefreshCheckLogin={setRefreshCheckLogin} />
+                {/* </Button> */}
             </div>
         </Col>
     )
