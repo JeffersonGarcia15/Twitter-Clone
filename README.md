@@ -12,8 +12,6 @@
 ![Sign Up](https://mylovetable.s3.us-east-2.amazonaws.com/register.gif)
 * Login Process and Validations
 ![Login](https://mylovetable.s3.us-east-2.amazonaws.com/loging.gif)
-* Edit Profile Process
-![Edit](https://mylovetable.s3.us-east-2.amazonaws.com/editing.gif)
 * Tweet
 ![Tweet](https://mylovetable.s3.us-east-2.amazonaws.com/tweet.gif)
 * Search, filter and home page
